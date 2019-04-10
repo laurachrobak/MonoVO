@@ -15,15 +15,15 @@ note: a lot of detail is described in comments in the code.
 Starting with imageCallMono.m
 
 + The camera calibration and ground trueth poses can be found on the KITTI odometry page. The documentation for the camera calibration explains how this information is stored but for the purposes of this code the camera intrinsic matrix is stored as variable K. 
-'''
+```
 %IntrinsicMatrixl = Pl(1:3,1:3);
 K1 = Pl(1:3,1:3); (line 20-21)
-'''
+```
 Similarly, I have stored the ground trueth poses in M.mat which can be found in the data folder. 
 
 + You can also control the amount of images you want the code to operate. 
-'''
+```
 % n is the number of images one wishes to consider
 %n = 4540;
 n=500; (lines 29-31)
-'''
+```
