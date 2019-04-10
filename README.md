@@ -51,7 +51,7 @@ This function is just an intermediary for findFeaturesMono() and EstimateRelativ
 
 This function takes in the two images, at times t and t+1, and outputs the features that are then used to estimate the relative pose between the two frames. 
 
-+ The first step is to detect the features within the image. Matlab has different built in fuction for various feature detectors (i.e SURF,Harris,BRISK).
++ The first step is to detect the features within the image. Matlab has different built in fuction for various feature detectors (i.e SURF, Harris, BRISK).
 ```
  points_1 = detectSURFFeatures(I_1, 'MetricThreshold', 1000);
  points_2 = detectSURFFeatures(I_2, 'MetricThreshold', 1000); (lines 6-7)
@@ -66,3 +66,12 @@ This function takes in the two images, at times t and t+1, and outputs the featu
 indexPairs = matchFeatures(f_1,f_2,'Unique', true); (line 30)
 ```
 + If the plotBoolean is set to true you can also visualize the matches you are getting, which is a good way to see how well the algorithm is preforming on your images. 
+<p align="center">
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/Left-t-features.png?raw=true"/>
+</p>
+<p align="center">
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/Left-tplus1-features.png?raw=true"/>
+</p>
+<p align="center">
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/matched-features.png?raw=true"/>
+</p>
