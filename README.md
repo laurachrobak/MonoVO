@@ -1,6 +1,8 @@
 # MonoVO
 Monocular visual odometry code in MatLAB using KITTI dataset
-
+<p align="center">
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/VOplot.png?raw=true"/>
+</p>
 # Intro
 This repository is a monocular visual odometry pipeline written in MatLAB and uses MatLAB built in functions to perform pure VO on the [KITTI](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) dataset. This code draws from Avi Singh's [stereo visual odometry pipeline](https://github.com/avisingh599/vo-howard08/blob/master/README.md). Additionaly, his blog post on [VO](https://avisingh599.github.io/vision/visual-odometry-full/) I found to be a really good resource.
 
@@ -12,7 +14,9 @@ This repository is a monocular visual odometry pipeline written in MatLAB and us
 # Code Explained
 note: a lot of detail is described in comments in the code.
 
-Starting with imageCallMono.m
+Starting with ...
+
+# imageCallMono.m
 
 + The camera calibration and ground trueth poses can be found on the KITTI odometry page. The documentation for the camera calibration explains how this information is stored but for the purposes of this code the camera intrinsic matrix is stored as variable K. 
 ```
@@ -27,3 +31,38 @@ Similarly, I have stored the ground trueth poses in M.mat which can be found in 
 %n = 4540;
 n=500; (lines 29-31)
 ```
++ multipleVOexzapleMono operates on two images- one at times t and the other at time t+1. This function returns an incremental orientation and rotation between the two frames. The position relative to the global frame is then calculated and stored. 
+
+pose in global frame:
+```
+pos = pos + Rpos * tr;
+Rpos = R * Rpos; (lines 66-67)
+final_poses(:,i) = pos;(line 72)
+```
+incremental pose:
+```
+result_pos(:,i) = tr;
+result_Rpos(:,:,i) = R;
+```
+# multipleVOexamplemono.m
+This function is just an intermediary for findFeaturesMono() and EstimateRelativePose().
+
+# findFeaturesMono.m
+
+This function takes in the two images, at times t and t+1, and outputs the features that are then used to estimate the relative pose between the two frames. 
+
++ The first step is to detect the features within the image. Matlab has different built in fuction for various feature detectors (i.e SURF,Harris,BRISK).
+```
+ points_1 = detectSURFFeatures(I_1, 'MetricThreshold', 1000);
+ points_2 = detectSURFFeatures(I_2, 'MetricThreshold', 1000); (lines 6-7)
+ ```
++ Once the features are detected a feature discriptor is extracted. Here I have set the parameter 'Upright' to true because rotations of the vehicle frame to frame are small, but you can turn this argument off if you want. 
+```
+[f_1,vpts_1] = extractFeatures(I_1,points_1,'Upright', true);
+[f_2,vpts_2] = extractFeatures(I_2,points_2,'Upright', true); (lines 20-21)
+```
++The feature discriptors are then matched frame to frame. Setting the 'Unique' argument to true prevents multiple features in framet from mathching to the same feature in frame t+1.  
+```
+indexPairs = matchFeatures(f_1,f_2,'Unique', true); (line 30)
+```
++ If the plotBoolean is set to true you can also visualize the matches you are getting, which is a good way to see how well the algorithm is preforming on your images. 
