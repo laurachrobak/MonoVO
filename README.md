@@ -75,3 +75,17 @@ indexPairs = matchFeatures(f_1,f_2,'Unique', true); (line 30)
 <p align="center">
   <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/matched-features.png?raw=true"/>
 </p>
+
+# EstimateRelativePose.m
+Finally, the function EstimateRelativePose takes in the matched features and outputs the transformation. This function first estimates the essential matrix between the two frames. 
+```
+    [E, inlierIdx] = estimateEssentialMatrix(matchedPoints1, matchedPoints2,...
+        cameraParams,'MaxNumTrials' ,1000,'Confidence',99,'MaxDistance' ,.1); (lines 17-18)
+```
+The inliers from this estimation are used to calculate the relative camera pose. 
+```
+    [orientation, location, validPointFraction] = ...
+        relativeCameraPose(E, cameraParams, inlierPoints1,...
+        inlierPoints2);(lines 37-39)
+```
+
