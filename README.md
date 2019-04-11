@@ -96,6 +96,12 @@ I tried a few different algorithms to recover the relative camera pose but the s
 This function plots the x-z trajectory of the vehicle, the overall error, and the incremental error in pos(x,y,z). One problem we run into when working with monocular images is scale ambiguity. Because this pipeline is monocular the trajectory will not be to the correct scale. Different methods exists to resolve the scale. One common way is to put an object of known size in the first frames and use this known length to solve for the scaling factor. Here I have just scaled the trajectory to match the ground truth trajectory. This is how they do it in the helperNormalizeViewSet.m scripts from MatLABs monocular visual odometry example. 
 
 Additionally, the incremental error is much more indicative of the performance of the visual odometry algorithm than the overall error is. 
+<p align="center">
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/error_plot_in1.jpg?raw=true"/>
+</p>
+<p align="center">
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/errorplot_BRISK?raw=true"/>
+</p>
 
 # Improvements
 Some things I would like to add or would projects to work on:
