@@ -100,7 +100,7 @@ Additionally, the incremental error is much more indicative of the performance o
   <img src="https://github.com/laurachrobak/MonoVO/blob/master/error_plot_in1.jpg?raw=true"/>
 </p>
 <p align="center">
-  <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/errorplot_BRISK?raw=true"/>
+  <img src="https://github.com/laurachrobak/MonoVO/blob/master/errorplot_BRISK.jpg?raw=true"/>
 </p>
 
 # Improvements
