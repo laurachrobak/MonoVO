@@ -3,8 +3,10 @@ Monocular visual odometry code in MatLAB using KITTI dataset
 <p align="center">
   <img src="https://github.com/laurachrobak/MonoVO/blob/master/images/VOplot.png?raw=true"/>
 </p>
+
 # Intro
-This repository is a monocular visual odometry pipeline written in MatLAB and uses MatLAB built in functions to perform pure VO on the [KITTI](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) dataset. This code draws from Avi Singh's [stereo visual odometry pipeline](https://github.com/avisingh599/vo-howard08/blob/master/README.md). Additionaly, his blog post on [VO](https://avisingh599.github.io/vision/visual-odometry-full/) I found to be a really good resource.
+
+This repository is a monocular visual odometry pipeline written in MatLAB. It uses MatLAB built in functions to perform pure VO on the [KITTI](http://www.cvlibs.net/datasets/kitti/eval_odometry.php) dataset. This code draws from Avi Singh's [stereo visual odometry pipeline](https://github.com/avisingh599/vo-howard08/blob/master/README.md). Additionaly, I found his blog post on [VO](https://avisingh599.github.io/vision/visual-odometry-full/) to be a really useful resource.
 
 # Start
 + Clone this repository and add everything to your path. The KITTI images that this repository uses can be dowloaded [here](https://umich.box.com/s/6w93aipmshjyjropkrd8ouzk17iamyaj). Put this '00' folder in the 'data' folder. To run this code simply call the script imageCallMono.m. This script will run for a few minutes, as is it is set to operate on 500 image pairs. 
