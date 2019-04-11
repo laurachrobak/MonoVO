@@ -105,8 +105,8 @@ Additionally, the incremental error is much more indicative of the performance o
 
 # Improvements
 Some things I would like to add:
-+ make this code work for stereo pairs
-  +try different types of pose estimation (i.e. 2d-3d or 3d-3d). This code only uses 2d-2d. 
-+ add bundle adjustment to otimize over whole track
+* make this code work for stereo pairs
+  * try different types of pose estimation (i.e. 2d-3d or 3d-3d). This code only uses 2d-2d. 
+* add bundle adjustment to otimize over whole track
 
 
